@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0125)http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data -->
+<html lang="en" class="gr__mukeshkumar_net"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msvalidate.01" content="7AA2C4B7FB3E20B4D5482959F67C6A73">
+    <meta http-equiv="Pragma" content="no-c">
+    <title>3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data | Mukesh Kumar</title>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="robots" content="index,follow">
+    <meta content="index, follow" name="Googlebot">
+    <meta http-equiv="Cache-control" content="public">
+    <meta name="expires" content="tue, 01 Nov 2050">
+    <meta name="copyright" content="Copyright © 2016-2017 mukeshkumar.net. The content is copyright to MukeshKumar.Net and may not be reproduced on other websites without permission from the MukeshKumar.Net.">
+    <meta name="revisit-after" content="1 days">
+    <meta name="type" content="website">
+    <meta name="language" content="en-us">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="creator" content="Mukesh Kumar (mukeshkumar.net)">
+    <meta name="publisher" content="Mukesh Kumar (mukeshkumar.net)">    
+
+
+        <meta name="title" content="3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data">
+        <meta name="keywords" content="creating an autocomplete textbox in angular, angular autocomplete textbox, ng-autocomplete, autocomplete textbox in angular using dynamic data, autocomplete textbox using jquery ui and jquery, html 5 datalist, ng2-completer">
+        <meta name="description" content="This article will show you three different ways of creating an AutoComplete textbox in Angular using typescript, HTML 5 DataList, Jquery, Jquery UI and Ng2-Completer.">
+        <meta name="Author" content="Mukesh Kumar">
+        <meta property="og:url" content="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data">
+        <meta property="og:description" content="This article will show you three different ways of creating an AutoComplete textbox in Angular using typescript, HTML 5 DataList, Jquery, Jquery UI and Ng2-Completer.">
+        <meta property="og:site_name" content="Mukesh Kumar">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:image" content="http://www.mukeshkumar.net/Upload/ArticleHeader/Header/angular.png">
+        <meta property="article:author" content="https://www.facebook.com/mukeshkumartech">
+        <meta property="article:publisher" content="https://www.facebook.com/mukeshkumartech">
+        <link rel="canonical" href="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:url" content="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data">
+        <meta name="twitter:title" content="3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data">
+        <meta name="twitter:description" content="This article will show you three different ways of creating an AutoComplete textbox in Angular using typescript, HTML 5 DataList, Jquery, Jquery UI and Ng2-Completer.">
+        <meta name="twitter:image" content="http://www.mukeshkumar.net/Upload/ArticleHeader/Header/angular.png">
+        <link href="https://plus.google.com/+mukeshkumartech" rel="publisher">
+    <link rel="shortcut icon" href="http://www.mukeshkumar.net/Content/images/favicon.ico" type="image/x-icon">    
+
+    <link href="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/BlogPage" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src=https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js></script>
+    <script src=https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js></script>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/browserfp.min.js.download"></script><script type="text/javascript" async="" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/analytics.js.download"></script><script async="" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112768134-1');
+</script>
+
+<link rel="preload" href="http://contextual.media.net/__media__/js/util/nrrV1674.js" as="script"></head>
+
+<body data-gr-c-s-loaded="true">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container" style="width:100%;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand">
+                    <div class="logoimage"> <a href="http://www.mukeshkumar.net/"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/logo.jpeg" width="30" height="30" alt="MK"> </a></div>
+                    <div class="logotitle"> <a href="http://www.mukeshkumar.net/"><span style="padding-top: 0px; color: white;">MUKESH <strong style="color:#A9E1FE;">KUMAR</strong></span></a></div>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a href="http://www.mukeshkumar.net/">Home</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/articles">Blog</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/awards">Awards</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/achievements">Achievements</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/about">About Me</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/contactus">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="background-color:#fff; width: 100%;">
+        <div class="row">           
+            <section id="main-content" itemscope="" itemtype="http://schema.org/Article">
+                <br>
+                
+
+
+<div class="col-md-12" align="center">
+    <script id="mNCC" language="javascript">
+    if (window.innerWidth >= 728) {
+        medianet_width = "728";
+        medianet_height = "90";
+        medianet_crid = "777676119";
+        medianet_versionId = "3111299";
+
+    } else if (window.innerWidth >= 468) {
+        medianet_width = '468';
+        medianet_height = '60';
+        medianet_crid = '638172593';
+        medianet_versionId = "3111299";
+
+    } else {
+        medianet_width = '160';
+        medianet_height = '90';
+        medianet_crid = '290447742';
+        medianet_versionId = "3111299";
+    }
+</script>
+<script id="mNSC" language="javascript" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/nmedianet.js.download"></script><script language="javascript" type="text/javascript" id="_mN_dy_777676119" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/fcmdynet.js.download"></script><iframe marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="90" width="728" id="_mN_main_777676119_0_n" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/saved_resource.html"></iframe>
+
+    <br>
+</div>
+
+<div class="col-md-9">
+
+
+<div id="mypost">
+
+    <div class="articleHeaderImage">
+        <div class="pin category pull-left">
+                    <div>
+                        <span class="pin category" style="position:absolute; margin:0 2px;">
+                            Angular
+                        </span>
+                    </div>
+        </div>
+        <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/angular.png" style="width:100%; height:100%">
+        
+        <div class="articleHeaderText">
+           
+            <div class="articleHeaderTextStyle">                
+                <h1><span itemprop="name"> <a href="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data" style="color:white;">3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data</a></span></h1>
+            </div>
+        </div>
+        
+
+    </div>
+    <div style="padding:10px 0 15px 0;">
+        <div class="pull-left">
+
+            <a href="http://www.mukeshkumar.net/about" class="ArticleHead_meta">
+                <span class="ArticleHead_metaIcon">
+                    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/mukeshkumar.jpg" width="45" height="45" alt="Mukesh Kumar">
+                </span>
+                <b><span itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">Mukesh Kumar</span></span></b>
+            </a>
+
+            <span><i class="fa fa-calendar 2x"></i><span><b> Posted :</b><time itemprop="datePublished">12 Months Ago</time></span></span>
+            <span><i class="fa fa-eye"></i><span><b> Views :</b>24415</span></span>
+
+        </div>
+
+
+        <div class="pull-right">
+                <div>
+
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.mukeshkumar.net%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;p[title]=3%20ways%20to%20implement%20Autocomplete%20Textbox%20in%20Angular%20with%20TypeScript%20on%20Large%20Data&amp;p[summary]=%3Cp%3EThis%20article%20will%20show%20you%20three%20different%20ways%20of%20creating%20an%20AutoComplete%20textbox%20in%20Angular%20using%20typescript,%20HTML%205%20DataList,%20Jquery,%20Jquery%20UI%20and%20Ng2-Completer.%3C/p%3E&amp;p[url]=/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;p[images][0]=http://www.mukeshkumar.net/Upload/ArticleHeader/Header/angular.png" target="_blank" title="Share on Facebook"><img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Facebook.png" width="32" height="32"></a>
+                    <a href="https://twitter.com/intent/tweet?text=3+ways+to+implement+Autocomplete+Textbox+in+Angular+with+TypeScript+on+Large+Data+-+Mukesh+Kumar+http%3a%2f%2fwww.mukeshkumar.net%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;source=Mukesh%20Kumar" targ="" target="_blank" title="Share on Twitter"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Twitter.png" width="32" height="32"></a>
+                    <a href="https://plus.google.com/share?url=http%3a%2f%2fwww.mukeshkumar.net%2f%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data" target="_blank" title="Share on Google+"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Google.png" width="32" height="32"></a>
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fwww.mukeshkumar.net%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;title=3+ways+to+implement+Autocomplete+Textbox+in+Angular+with+TypeScript+on+Large+Data+-+Mukesh+Kumar+&amp;summary=This+article+will+show+you+three+different+ways+of+creating+an+AutoComplete+textbox+in+Angular+using+typescript%2c+HTML+5+DataList%2c+Jquery%2c+Jquery+UI+and+Ng2-Completer.&amp;source=%20Mukesh%20Kumar" target="_blank" title="Share on LinkedIn"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/LinkedIn.png" width="32" height="32"></a>
+                    <a href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fwww.mukeshkumar.net%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;description=3+ways+to+implement+Autocomplete+Textbox+in+Angular+with+TypeScript+on+Large+Data+-+Mukesh+Kumar+" target="_blank" title="Share on Pinterest"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Pinterest.png" width="32" height="32"></a>
+                </div>
+        </div>
+        <br>
+        <input type="hidden" id="hdnPostId" value="281">
+    </div>
+    <br>
+    <span itemprop="articleBody" class="articleBody">
+        <p>In this article, we will learn three different ways to create an AutoComplete textbox using Angular with Typescript. The first way will use HTML 5 DataList, second way will use the JQuery UI and the third way will use the Ng2-Completer and these implementations will be done in the Angular app. We will see three of these approaches with static and dynamic data. Here static data means, data is defined directly with controls and dynamic data means we will fetch data from somewhere and display it with these controls.&nbsp;</p>
+
+<p>Let's jump to create an Angular CLI project ad move to implementation of AutoComplete textbox. If you don't have an idea how to create an Angular CLI project with step by step instruction or if you are beginner then you can follow this article&nbsp; <strong><a href="http://www.mukeshkumar.net/articles/angular5/building-an-angular-5-cli-project-with-ngx-bootstrap" target="_blank">Building an Angular 5 CLI project with&nbsp;</a></strong><strong><a href="http://www.mukeshkumar.net/articles/angular5/building-an-angular-5-cli-project-with-ngx-bootstrap" target="_blank">ngx</a></strong><strong><a href="http://www.mukeshkumar.net/articles/angular5/building-an-angular-5-cli-project-with-ngx-bootstrap" target="_blank">-bootstrap</a>.</strong></p>
+
+<h6>More articles on Angular which you may like.</h6>
+
+<ul>
+	<li><strong><a href="http://www.mukeshkumar.net/articles/angular/template-driven-forms-and-validation-in-angular-with-typescript" target="_blank">Template Driven Forms and Validation in Angular with Typescript</a></strong></li>
+	<li><a href="http://www.mukeshkumar.net/articles/angular/crud-operations-in-angular-with-typescript-using-ngx-bootstrap" target="_blank"><strong>CRUD Operations in Angular with Typescript using </strong></a><a href="http://www.mukeshkumar.net/articles/angular/crud-operations-in-angular-with-typescript-using-ngx-bootstrap" target="_blank"><strong>ngx</strong></a><a href="http://www.mukeshkumar.net/articles/angular/crud-operations-in-angular-with-typescript-using-ngx-bootstrap" target="_blank"><strong>-bootstrap</strong></a></li>
+	<li><strong><a href="http://www.mukeshkumar.net/articles/angular5/share-data-between-sibling-components-in-angular-5-using-rxjs-behaviorsubject" target="_blank">Share data between sibling components in Angular 5 using Rxjs BehaviorSubject?</a></strong></li>
+	<li><strong><a href="http://www.mukeshkumar.net/articles/angular5/dynamic-components-in-angular-with-typescript" target="_blank">Dynamic Components in Angular with TypeScript?</a></strong></li>
+	<li><a href="http://www.mukeshkumar.net/articles/angular/3-steps-to-upgrade-project-from-angular-5-to-angular-6" target="_blank"><strong>3 Steps to upgrade project from Angular 5 to Angular 6?</strong></a></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>At the end of this demonstration, the final output will be similar to as the following image&nbsp;shows. Here you can see how we are getting the similar data once we type some character inside the textbox.&nbsp;</p>
+
+<p><img alt="AutoComplete Textbox in Angular" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/280820180028autocomplete.png" style="height:90%; width:100%"></p>
+
+<p>So, let start the demonstration and before starting this step by step demonstration, we hope, you all have learned how to create an Angular CLI project. So, let move to implement an AutoComplete textbox using the first way.&nbsp;</p>
+
+<p>So, first create a folder as a name with 'data' and create a JSON file inside this with the name as 'users.json'. After creating the file, just create a JSON&nbsp;array similar as follows. Where you would define data from 1000 to 9999. This data will be used for dynamic data while searching something in the textbox and a service will hit to this file and get the data.</p>
+
+<pre><code class="language-json hljs">[<span class="hljs-string">"1000"</span>,
+    <span class="hljs-string">"1001"</span>,
+    <span class="hljs-string">"1002"</span>,
+    <span class="hljs-string">"1003"</span>,
+    <span class="hljs-string">"1004"</span>,
+    <span class="hljs-string">"1005"</span>,
+    <span class="hljs-string">"1006"</span>,
+    <span class="hljs-string">"1007"</span>,
+    <span class="hljs-string">"1008"</span>,
+    <span class="hljs-string">"1009"</span>,
+    <span class="hljs-string">"1010"</span>,
+    ......
+    ......
+    <span class="hljs-number">9999</span>]</code></pre>
+
+<p>Now, let's create an Angular service as the name with 'UserService' and create a function getUserList() which will get the list of users. The function getUserList() will get the list of users from the data file 'users.json'. Here you need to take care of two points, don't forget to import HttpClientModule on AppModule, import HttpClient on UserService and secondly, set the header value of Content-type.</p>
+
+<pre><code class="language-javascript hljs">import { Injectable } from <span class="hljs-string">"@angular/core"</span>;
+import { HttpClient } from <span class="hljs-string">'@angular/common/http'</span>;
+import { HttpHeaders } from <span class="hljs-string">"@angular/common/http"</span>;
+
+
+@Injectable()
+export <span class="hljs-keyword">class</span> UserService {
+    constructor(private http: HttpClient) {
+    }
+
+    getUserList() {
+        <span class="hljs-keyword">let</span> headers = <span class="hljs-keyword">new</span> HttpHeaders();
+        headers.set(<span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'application/json'</span>);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.http.get(<span class="hljs-string">'/src/app/data/users.json'</span>, { headers });
+    }
+}</code></pre>
+
+<p>Here is our final AppModule, which importing HttpClientModule, so that we can process&nbsp;HTTP operations, importing UserService, so that can access the list of users from the 'users.json' file.</p>
+
+<pre><code class="language-javascript hljs">import { BrowserModule } from <span class="hljs-string">'@angular/platform-browser'</span>;
+import { NgModule } from <span class="hljs-string">'@angular/core'</span>;
+import { HttpClientModule } from <span class="hljs-string">'@angular/common/http'</span>;
+
+import { AppRoutingModule } from <span class="hljs-string">'./app-routing.module'</span>;
+import { AppComponent } from <span class="hljs-string">'./app.component'</span>;
+import { UserService } from <span class="hljs-string">'src/app/service/user.service'</span>;
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule
+  ],
+  providers:[UserService],
+  bootstrap: [AppComponent]
+  
+})
+export <span class="hljs-keyword">class</span> AppModule { }
+</code></pre>
+
+<h6>First way: Using HTML 5 DataList</h6>
+
+<p>Let's create an&nbsp;AutoComplete textbox using Html5 DataList. So, open app.component.html and add the code snippet as follows. Here we just create a table for simplicity, first, let talk about static data. We will create a textbox with list attribute and create a DataList just below to it and create some dummy value. Just pass the static DataList id as 'staticUserIds' with textbox list attribute. So, that while typing anything, it will search the similar records from the DataList as AutoComplete.</p>
+
+<p>Now, let's talk about AutoComplete textbox with HTML 5 DataList using dynamic data. So, create an input control with Id and list attribute. Create the DataList just below to it, but this time we will generate the dynamic data using *ngFor directive and pass the DataList Id with textbox list attribute. Once the user will start typing and on the keyup, we will call the function 'getUserIdFirstWay($event)' which will take the input character as a parameter. Based on this parameter value, we will search the matching records and show in the textbox as AutoComplete value.</p>
+
+<pre><code class="language-html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> (<span class="hljs-attribute">keyup</span>)=<span class="hljs-value">"getUserIdsFirstWay($event)"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"userIdFirstWay"</span> <span class="hljs-attribute">list</span>=<span class="hljs-value">"dynmicUserIds"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">datalist</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"dynmicUserIds"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-title">option</span> *<span class="hljs-attribute">ngFor</span>=<span class="hljs-value">"let item of userList1"</span> [<span class="hljs-attribute">value</span>]=<span class="hljs-value">"item"</span>&gt;</span>{{item}}<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">datalist</span>&gt;</span></code></pre>
+
+<p>Here is the full HTML code for First Way of implementing AutoComplete textbox.</p>
+
+<pre><code class="language-html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">router-outlet</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">router-outlet</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">table</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">colspan</span>=<span class="hljs-value">"2"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"text-align: center;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>Auto Complete Demo<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">colspan</span>=<span class="hljs-value">"2"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"text-align: center;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span> First Way: Using HTML 5 DataList<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      User ID with static data:
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">list</span>=<span class="hljs-value">"staticUserIds"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">datalist</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"staticUserIds"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1000<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1100<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1110<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1200<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1220<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1340<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1567<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1678<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span>&gt;</span>1789<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">datalist</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      User ID with dynamic data:
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> (<span class="hljs-attribute">keyup</span>)=<span class="hljs-value">"getUserIdsFirstWay($event)"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"userIdFirstWay"</span> <span class="hljs-attribute">list</span>=<span class="hljs-value">"dynmicUserIds"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">datalist</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"dynmicUserIds"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">option</span> *<span class="hljs-attribute">ngFor</span>=<span class="hljs-value">"let item of userList1"</span> [<span class="hljs-attribute">value</span>]=<span class="hljs-value">"item"</span>&gt;</span>{{item}}<span class="hljs-tag">&lt;/<span class="hljs-title">option</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">datalist</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>  
+<span class="hljs-tag">&lt;/<span class="hljs-title">table</span>&gt;</span></code></pre>
+
+<p>Now, let's move to AppComponent and prepare the data for the textbox. First, we will get the whole users data on the page initialization and if user types anything and keyup then&nbsp;getUserIdFirstWay() function will be called. This function will not call continuously while typing anything, because it will make multiple calls asynchronously, that will cause for the hanging of browser. So, to resolve this, we will wait for 200 milliseconds and then call the next call for filtering the data. And filtered data based on the textbox's entered value will show as an AutoComplete textbox value.</p>
+
+<pre><code class="language-javascript hljs">import { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
+import { UserService } from <span class="hljs-string">'src/app/service/user.service'</span>;
+
+@Component({
+  selector: <span class="hljs-string">'app-root'</span>,
+  templateUrl: <span class="hljs-string">'./app.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./app.component.css'</span>]
+})
+export <span class="hljs-keyword">class</span> AppComponent implements OnInit {
+
+  userData: any[] = [];
+
+  lastkeydown1: number = <span class="hljs-number">0</span>;
+  subscription: any;
+
+  constructor(private userService: UserService) {
+    <span class="hljs-comment">//Get the user data from users.json</span>
+    <span class="hljs-keyword">this</span>.userService.getUserList().subscribe(
+      data =&gt; {
+        <span class="hljs-built_in">Object</span>.assign(<span class="hljs-keyword">this</span>.userData, data);
+      },
+      error =&gt; {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Something wrong here"</span>);
+      });    
+  }  
+
+  getUserIdsFirstWay($event) {
+    <span class="hljs-keyword">let</span> userId = (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">HTMLInputElement</span>&gt;</span>document.getElementById('userIdFirstWay')).value;
+    this.userList1 = [];
+
+    if (userId.length &gt; 2) {
+      if ($event.timeStamp - this.lastkeydown1 &gt; 200) {
+        this.userList1 = this.searchFromArray(this.userData, userId);
+      }
+    }
+  }  
+
+  searchFromArray(arr, regex) {
+    let matches = [], i;
+    for (i = 0; i <span class="hljs-tag">&lt; <span class="hljs-attribute">arr.length</span>; <span class="hljs-attribute">i</span>++) {
+      <span class="hljs-attribute">if</span> (<span class="hljs-attribute">arr</span>[<span class="hljs-attribute">i</span>]<span class="hljs-attribute">.match</span>(<span class="hljs-attribute">regex</span>)) {
+        <span class="hljs-attribute">matches.push</span>(<span class="hljs-attribute">arr</span>[<span class="hljs-attribute">i</span>]);
+      }
+    }
+    <span class="hljs-attribute">return</span> <span class="hljs-attribute">matches</span>;
+  };
+}
+</span></span></code></pre>
+
+<p>&nbsp;</p>
+
+<p>Second Way: Using JQueryUI</p>
+
+<p>In the second approach, we will use JQuery UI library to create AutoComplete textbox with Angular and Typescript. Most of us, have already used Jquery UI and&nbsp;Jquery libraries without Angular. But this time, we will use these with Angular. So, it will be a little interesting to see how to use Jquery with Angular.</p>
+
+<p>So, first let open the Visual Studio Code terminal windows of the project and execute the following commands to install Jquery and Jquery UI using NPM.</p>
+
+<p><strong>npm</strong><strong> install jquery jquery-</strong><strong>ui</strong><strong>-dist</strong></p>
+
+<p>Once these libraries will install, we have to configure first inside scripts section of the angular.json. After configuration, we can use it.</p>
+
+<pre><code class="language-json hljs"><span class="hljs-string">"scripts"</span>: [
+              <span class="hljs-string">"node_modules/jquery/dist/jquery.min.js"</span>,
+              <span class="hljs-string">"node_modules/jquery-ui-dist/jquery-ui.js"</span>
+            ]</code></pre>
+
+<p>Now, let's prepare the HTML template for creating AutoComplete textbox with static and dynamic data both using Jquery UI.&nbsp;So, here we are creating two textboxes with unique IDs. The first textbox, we will pass the static data, second textbox will bind with dynamic data.</p>
+
+<pre><code class="language-html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">colspan</span>=<span class="hljs-value">"2"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">hr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">colspan</span>=<span class="hljs-value">"2"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"text-align: center;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span> Second Way: Using Jquery UI<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      User ID with static data:
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"staticUserIdsSecondWay"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      User ID with dynamic data:
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"dynamicUserIdsSecondWay"</span> (<span class="hljs-attribute">keyup</span>)=<span class="hljs-value">"getUserIdsSecondtWay($event)"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span></code></pre>
+
+<p>Now, let move to AppComponent and understand, how we can use the Jquery inside the Typescript file. So, using the Jquery or $ which is an alias for JQuery. first, we need to declare the var as $ with type any. And then we can write any jquery code using the $, it automatically points to Jquery $.</p>
+
+<pre><code class="language-javascript hljs">declare <span class="hljs-keyword">var</span> $: any;</code></pre>
+
+<p>Create an Angular's life cycle event 'ngOnInit()' and set some static values with textbox which have 'staticUserIdSecondWay'.</p>
+
+<pre><code class="language-javascript hljs">ngOnInit(){
+    <span class="hljs-comment">//Using Jquery --- $ is declared at the top</span>
+    $(<span class="hljs-string">'#staticUserIdsSecondWay'</span>).autocomplete({
+      source: [<span class="hljs-string">'1101'</span>, <span class="hljs-string">'1202'</span>, <span class="hljs-string">'1303'</span>]
+    });
+  }</code></pre>
+
+<p>Let's move to AppComponent again and create the function 'getUserIdsSecondtWay' which is responsible for binding dynamic data to the textbox. First, we will find the textbox using $('textbox id goes here') and bind the data with this textbox using autocomplete function, which is available in Jquery UI library. Following is the whole code for AppComponent.</p>
+
+<pre><code class="language-javascript hljs">import { Component, OnInit } from <span class="hljs-string">'@angular/core'</span>;
+import { CompleterService, CompleterData } from <span class="hljs-string">'ng2-completer'</span>;
+import { UserService } from <span class="hljs-string">'src/app/service/user.service'</span>;
+
+declare <span class="hljs-keyword">var</span> $: any;
+
+@Component({
+  selector: <span class="hljs-string">'app-root'</span>,
+  templateUrl: <span class="hljs-string">'./app.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./app.component.css'</span>]
+})
+export <span class="hljs-keyword">class</span> AppComponent implements OnInit {
+
+  userData: any[] = [];
+  userList1: any;
+  userList2: any;
+
+  lastkeydown1: number = <span class="hljs-number">0</span>;
+  lastkeydown2: number = <span class="hljs-number">0</span>;
+  subscription: any;
+
+  constructor(private userService: UserService) {
+    <span class="hljs-comment">//Get the user data from users.json</span>
+    <span class="hljs-keyword">this</span>.userService.getUserList().subscribe(
+      data =&gt; {
+        <span class="hljs-built_in">Object</span>.assign(<span class="hljs-keyword">this</span>.userData, data);
+      },
+      error =&gt; {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Something wrong here"</span>);
+      });    
+  }
+
+  ngOnInit(){
+    <span class="hljs-comment">//Using Jquery --- $ is declared at the top</span>
+    $(<span class="hljs-string">'#staticUserIdsSecondWay'</span>).autocomplete({
+      source: [<span class="hljs-string">'1101'</span>, <span class="hljs-string">'1202'</span>, <span class="hljs-string">'1303'</span>]
+    });
+  }
+
+  getUserIdsFirstWay($event) {
+    <span class="hljs-keyword">let</span> userId = (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">HTMLInputElement</span>&gt;</span>document.getElementById('userIdFirstWay')).value;
+    this.userList1 = [];
+
+    if (userId.length &gt; 2) {
+      if ($event.timeStamp - this.lastkeydown1 &gt; 200) {
+        this.userList1 = this.searchFromArray(this.userData, userId);
+      }
+    }
+  }
+
+  getUserIdsSecondtWay($event) {
+    
+    let userId = (<span class="hljs-tag">&lt;<span class="hljs-title">HTMLInputElement</span>&gt;</span>document.getElementById('dynamicUserIdsSecondWay')).value;
+
+    this.userList2 = [];
+
+    if (userId.length &gt; 2) {
+      if ($event.timeStamp - this.lastkeydown2 &gt; 200) {
+        this.userList2 = this.searchFromArray(this.userData, userId);
+
+        $('#dynamicUserIdsSecondWay').autocomplete({
+          source: this.userList2,
+          messages: {
+            noResults: '',
+            results: function () { }
+          }
+        });
+      }
+    }
+  }
+
+  searchFromArray(arr, regex) {
+    let matches = [], i;
+    for (i = 0; i <span class="hljs-tag">&lt; <span class="hljs-attribute">arr.length</span>; <span class="hljs-attribute">i</span>++) {
+      <span class="hljs-attribute">if</span> (<span class="hljs-attribute">arr</span>[<span class="hljs-attribute">i</span>]<span class="hljs-attribute">.match</span>(<span class="hljs-attribute">regex</span>)) {
+        <span class="hljs-attribute">matches.push</span>(<span class="hljs-attribute">arr</span>[<span class="hljs-attribute">i</span>]);
+      }
+    }
+    <span class="hljs-attribute">return</span> <span class="hljs-attribute">matches</span>;
+  };
+}
+</span></span></code></pre>
+
+<p>We have done some modification with .ui-autocomplete CSS as follows.</p>
+
+<pre><code class="language-css hljs"><span class="hljs-class">.ui-autocomplete</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">list-style</span>:<span class="hljs-value"> none</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> gainsboro</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">80px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">padding-left</span>:<span class="hljs-value"> <span class="hljs-number">10px</span></span></span>;
+  <span class="hljs-rule">}</span></span>
+
+<span class="hljs-class">.ui-helper-hidden-accessible</span> <span class="hljs-rules">{ <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value">none</span></span>; <span class="hljs-rule">}</span></span></code></pre>
+
+<h6>Third Way: Using Ng2-Completer</h6>
+
+<p>Let's create an AutoComplete textbox using Ng2-Completer component, you can install it from NPM using following command.</p>
+
+<p>npm install ng2-completer --save</p>
+
+<p>Once, it will install, just define the ng2-completer.umd.js path with angular.json's scripts section.</p>
+
+<pre><code class="language-json hljs"><span class="hljs-string">"scripts"</span>: [
+              <span class="hljs-string">"node_modules/jquery/dist/jquery.min.js"</span>,
+              <span class="hljs-string">"node_modules/jquery-ui-dist/jquery-ui.js"</span>,
+              <span class="hljs-string">"node_modules/ng2-completer/bundles/ng2-completer.umd.js"</span>
+            ]</code></pre>
+
+<p>We have to also update the AppModule to import Ng2CompleterModule. So, finally, our AppMoudle will look like as follows.</p>
+
+<pre><code class="language-javascript hljs">import { BrowserModule } from <span class="hljs-string">'@angular/platform-browser'</span>;
+import { NgModule } from <span class="hljs-string">'@angular/core'</span>;
+import { HttpClientModule } from <span class="hljs-string">'@angular/common/http'</span>;
+import { FormsModule } from <span class="hljs-string">'@angular/forms'</span>;
+import { Ng2CompleterModule } from <span class="hljs-string">'ng2-completer'</span>;
+
+import { AppRoutingModule } from <span class="hljs-string">'./app-routing.module'</span>;
+import { AppComponent } from <span class="hljs-string">'./app.component'</span>;
+import { UserService } from <span class="hljs-string">'src/app/service/user.service'</span>;
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    Ng2CompleterModule 
+    
+  ],
+  providers:[UserService],
+  bootstrap: [AppComponent]
+  
+})
+export <span class="hljs-keyword">class</span> AppModule { }
+</code></pre>
+
+<p>Now add one table row for third way demonstration of adding an AutoComplete textbox using Ng2-Completer as follows. Here &lt;ng2-completer&gt; will be your tag name and data source will be that from where we will get the actual data, minSearchLenght property takes input that defines how many characters required to start searching matching data.</p>
+
+<pre><code class="language-html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span> <span class="hljs-attribute">colspan</span>=<span class="hljs-value">"2"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"text-align: center;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">h4</span>&gt;</span> Third Way: Using NG2-Completer<span class="hljs-tag">&lt;/<span class="hljs-title">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      User ID with dynamic data:
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">ng2-completer</span> [<span class="hljs-attribute">datasource</span>]=<span class="hljs-value">"userData"</span> [<span class="hljs-attribute">minSearchLength</span>]=<span class="hljs-value">"2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">ng2-completer</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span></code></pre>
+
+<p>Once we will do all the implementation, we can run the project using ng serve command from CLI terminal window and we will find the similar output as we have shown at the beginning of the article.</p>
+
+<p>Conclusion</p>
+
+<p>So, today we have seen three different ways of creating an AutoComplete textbox in Angular using typescript, HTML 5 DataList, Jquery, Jquery UI and Ng2-Completer.</p>
+
+<p>I hope this post will help you. Please put your feedback using comment which helps me to improve myself for next post. If you have any doubts please ask your doubts or query in the comment section and If you like this post, please share it with your friends. Thanks</p>
+
+    </span>
+    <div>
+        <br>
+        <br>
+            <div class="pull-right">
+                <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/tag.png" alt="tags" title="Tags" width="40" height="40">
+                    <h2 class="btn btn-warning">AutoComplete</h2>
+                    <h2 class="btn btn-warning">Angular</h2>
+                    <h2 class="btn btn-warning">Angular 2</h2>
+            </div>
+
+        <div class="pull-left">
+            <b>Share this article </b>
+            <br><br>
+
+
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fwww.mukeshkumar.net%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;p[title]=3%20ways%20to%20implement%20Autocomplete%20Textbox%20in%20Angular%20with%20TypeScript%20on%20Large%20Data&amp;p[summary]=%3Cp%3EThis%20article%20will%20show%20you%20three%20different%20ways%20of%20creating%20an%20AutoComplete%20textbox%20in%20Angular%20using%20typescript,%20HTML%205%20DataList,%20Jquery,%20Jquery%20UI%20and%20Ng2-Completer.%3C/p%3E&amp;p[url]=/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;p[images][0]=http://www.mukeshkumar.net/Upload/ArticleHeader/Header/angular.png" target="_blank" title="Share on Facebook"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Facebook.png" width="32" height="32"></a>
+            <a href="https://twitter.com/intent/tweet?text=3+ways+to+implement+Autocomplete+Textbox+in+Angular+with+TypeScript+on+Large+Data+-+Mukesh+Kumar+http%3a%2f%2fwww.mukeshkumar.net%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;source=Mukesh%20Kumar" targ="" target="_blank" title="Share on Twitter"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Twitter.png" width="32" height="32"></a>
+            <a href="https://plus.google.com/share?url=http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data" target="_blank" title="Share on Google+"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Google.png" width="32" height="32"></a>
+            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fwww.mukeshkumar.net%2farticles%2fangular%2f3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data&amp;title=3+ways+to+implement+Autocomplete+Textbox+in+Angular+with+TypeScript+on+Large+Data+-+Mukesh+Kumar+&amp;summary=This+article+will+show+you+three+different+ways+of+creating+an+AutoComplete+textbox+in+Angular+using+typescript%2c+HTML+5+DataList%2c+Jquery%2c+Jquery+UI+and+Ng2-Completer.&amp;source=%20Mukesh%20Kumar" target="_blank" title="Share on LinkedIn"> <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/LinkedIn.png" width="32" height="32"></a>
+            
+            <br>
+        </div>
+        <br>
+    </div>
+    <br>
+    
+</div>
+<br>
+
+<meta itemprop="url" content="www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data">        <hr>
+        <div style="margin-top:15px;">
+                    <div class="pull-right">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/angular/reactive-forms-and-validation-in-angular-with-typescript" title="Reactive Forms and Validation in Angular with Typescript "> Next &gt;&gt;</a>
+        </div>
+        <div class="pull-left">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/angular/crud-operation-in-asp-net-core-web-api-with-entity-framework-core" title="CRUD Operation in Asp.Net Core Web API with Entity Framework Core">&lt;&lt; Prev</a>
+        </div>
+
+        </div>
+        <br>
+        <div align="center">
+            <script id="mNCC" language="javascript">
+    if (window.innerWidth >= 728) {
+        medianet_width = "728";
+        medianet_height = "90";
+        medianet_crid = "777676119";
+        medianet_versionId = "3111299";
+
+    } else if (window.innerWidth >= 468) {
+        medianet_width = '468';
+        medianet_height = '60';
+        medianet_crid = '638172593';
+        medianet_versionId = "3111299";
+
+    } else {
+        medianet_width = '160';
+        medianet_height = '90';
+        medianet_crid = '290447742';
+        medianet_versionId = "3111299";
+    }
+</script>
+<script id="mNSC" language="javascript" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/nmedianet.js.download"></script><script language="javascript" type="text/javascript" id="_mN_dy_777676119_1" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/fcmdynet.js(1).download"></script><iframe marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="90" width="728" id="_mN_main_777676119_1_n" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/saved_resource(1).html"></iframe>
+
+            <br>
+        </div>
+        <div class="panelcontainerViolate">
+            <div>
+                <h3>Posted Comments :  </h3>
+                <div id="dvPostedComment">
+                    <br>
+<div>
+    <div>
+                <div class="media">
+
+                        <div class="comment-box">
+                            <div class="pull-left" style="margin-right: 10px;">
+                                <span>
+                                    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/comment.jpg" class="comment-avatar" alt="Harry">
+                                </span>
+                            </div>
+                            <div class="comment-head" style="padding-left: 10px;">
+                                <h4 class="comment-name by-author">
+                                    <b style="text-transform: uppercase;">Harry</b>
+                                    <small><b>Posted :</b> 6 Months Ago</small>
+                                </h4>
+
+                                <p style="text-align:justify;" class="comment-content">
+                                    Hi,
+This is nice example here. Which one is the best approach, I see ng2-completer looks like neat solutions.
+                                </p>
+                            </div>
+                        </div>
+                </div>
+                <div class="media">
+
+                        <div class="comment-box">
+                            <div class="pull-left" style="margin-right: 10px;">
+                                <span>
+                                    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/comment.jpg" class="comment-avatar" alt="Georgie">
+                                </span>
+                            </div>
+                            <div class="comment-head" style="padding-left: 10px;">
+                                <h4 class="comment-name by-author">
+                                    <b style="text-transform: uppercase;">Georgie</b>
+                                    <small><b>Posted :</b> 2 Months Ago</small>
+                                </h4>
+
+                                <p style="text-align:justify;" class="comment-content">
+                                    I Agree with Harry. Using ng2-completer makes life so much easy. Good Post
+                                </p>
+                            </div>
+                        </div>
+                </div>
+                <div class="media">
+
+                        <div class="comment-box">
+                            <div class="pull-left" style="margin-right: 10px;">
+                                <span>
+                                    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/comment.jpg" class="comment-avatar" alt="Rakesh">
+                                </span>
+                            </div>
+                            <div class="comment-head" style="padding-left: 10px;">
+                                <h4 class="comment-name by-author">
+                                    <b style="text-transform: uppercase;">Rakesh</b>
+                                    <small><b>Posted :</b> Last Month</small>
+                                </h4>
+
+                                <p style="text-align:justify;" class="comment-content">
+                                    The Last one was helpful. Thank you for the wonderful page with lot of examples. 
+                                </p>
+                            </div>
+                        </div>
+                </div>
+    </div>
+
+</div>
+
+                </div>
+            </div>
+            <br>
+            <div class="panelheaderViolate">
+                Leave your comment
+            </div>
+            
+
+<div id="dvAddComment">
+    
+    
+        <div class="well">
+            <div class="form-group">
+                
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label for="CommentUserFullName">Your Name</label>
+                            <input class="form-control" data-val="true" data-val-required="Your Name is requried" id="CommentUserFullName" name="CommentUserFullName" type="text" value="">
+                            <span class="field-validation-valid" data-valmsg-for="CommentUserFullName" data-valmsg-replace="true" style="color:red"></span>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label for="CommenterEmailId">Email Id</label>
+                            <input class="form-control" data-val="true" data-val-regex="Please enter correct email" data-val-regex-pattern="^(?(&quot;)(&quot;.+?&quot;@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&amp;&#39;\*\+/=\?\^`\{\}\|~\w])*)(?&lt;=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$" data-val-required="Email Id is required" id="CommenterEmailId" name="CommenterEmailId" type="text" value="">
+                            <span class="field-validation-valid" data-valmsg-for="CommenterEmailId" data-valmsg-replace="true" style="color:red"></span>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label for="CommenterSite">Your Site</label>
+                            <input class="form-control" id="CommenterSite" name="CommenterSite" type="text" value="">
+                        </div>
+                    </div>
+<input data-val="true" data-val-regex="Please enter correct email" data-val-regex-pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" id="ToCommenterEmailId" name="ToCommenterEmailId" type="hidden" value="">                <input data-val="true" data-val-number="The field PostId must be a number." data-val-required="The PostId field is required." id="PostId" name="PostId" type="hidden" value="281">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label for="CommentContent">Your Comment</label>
+                        <textarea class="form-control" cols="20" data-val="true" data-val-required="Comment is required" id="CommentContent" name="CommentContent" rows="3"></textarea>
+                        <span class="field-validation-valid" data-valmsg-for="CommentContent" data-valmsg-replace="true" style="color:red"></span>
+                    </div>
+                </div>
+                
+                <div style="text-align:center;padding-bottom:10px"><span id="resultMessage" class="validation_error"></span></div>
+                <input type="submit" value="Submit Comment" id="btnSubmitComment" class="btn btn-primary">
+              
+
+            </div>
+        </div>
+    
+</div>
+
+
+        </div>
+</div>
+<div class="col-md-3">
+    
+<div>
+    <div class="panel panel-default text-left">
+        <div class="panelheaderOrange">
+           Search
+        </div>
+        <div class="panel-body">           
+            <div class="input-group">
+                <form action="http://www.mukeshkumar.net/search" enctype="multipart/form-data" method="get">        <div class="input-group">
+            <input class="form-control" id="p" name="p" placeholder="Search for tutorials, interviews or articles" type="text" value="">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-warning" value="Search">Search</button>
+            </span>
+        </div>
+</form>                          
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="panel panel-default text-left">
+        <div class="panelheaderblue">
+            Latest eBook Download
+        </div>
+        <div class="panel-body">
+            <a href="https://www.c-sharpcorner.com/ebooks/azure-devops-complete-ci-cd-pipeline" target="_blank" title="Azure DevOps CI/CD Pipeline Complete Practical Guide - By Mukesh Kumar">
+                <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Azure-DevOps-CI-CD-Pipeline-Practical-Guide.jpg" style="border:solid 1px; width: 280px;" alt="Azure DevOps CI/CD Pipeline Complete Practical Guide - By Mukesh Kumar">
+            </a>
+        </div>
+        <div class="panel-body">
+            <a href="http://www.mukeshkumar.net/Upload/ebook/CSharp-6-Practical-Guide-By-Mukesh-Kumar.pdf" target="_blank" title="CSharp 6 - Practical Guide - By Mukesh Kumar">
+                <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/CSharp-6-Practical-Guide-By-Mukesh-Kumar.jpg" style="border:solid 1px; width: 280px;" alt="CSharp 6 - Practical Guide - By Mukesh Kumar">
+            </a>
+        </div>
+    </div>
+</div>
+<div>
+    <script id="mNCC" language="javascript">
+    medianet_width = "300";
+    medianet_height = "250";
+    medianet_crid = "610166569";
+    medianet_versionId = "3111299";
+</script>
+<script id="mNSC" language="javascript" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/nmedianet.js.download"></script><script language="javascript" type="text/javascript" id="_mN_dy_610166569" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/fcmdynet.js(2).download"></script><iframe marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="250" width="300" id="_mN_main_610166569_2_n" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/saved_resource(2).html"></iframe>
+
+</div>
+<div>
+    <div class="panel panel-default text-left">
+        <div class="panelheaderblue">
+            Categories
+        </div>
+        <div class="panel-body">
+            <div id="dvSinglePostCategoriesBind">        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/csharp">C#</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/aspnet">Asp.Net</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/mvc">MVC</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/sql">SQL</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/linq">Linq</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/wcf">WCF</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/adonet">Ado.Net</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/wpf">WPF</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/angularjs">Angular Js</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/curl">Curl</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/web-api">Web API</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/azure">Azure</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/achievement">Achievement</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/visualstudio">Visual Studio</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/designpattern">Design Pattern</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/javascript">JavaScript</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/entityframework">Entity Framework</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/oops">OOPs</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/seo">SEO</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/dotnetcore">DotNetCore</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/angular5">Angular 5</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/aspnetcore">Asp.Net Core </a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/xamarin">Xamarin</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/career">Career</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/angular">Angular</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/vscode">Visual Studio Code</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/testing">Testing</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/java">Java</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/efcore">Entity Framework Core</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/python">Python</a>
+        </div>
+        <div class="categoryLi">
+            <a class="btn btn-primary" href="http://www.mukeshkumar.net/articles/typescript">TypeScript</a>
+        </div>
+</div>
+        </div>
+    </div>
+</div>
+<div>
+    <script id="mNCC" language="javascript">
+    medianet_width = "300";
+    medianet_height = "250";
+    medianet_crid = "610166569";
+    medianet_versionId = "3111299";
+</script>
+<script id="mNSC" language="javascript" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/nmedianet.js.download"></script><script language="javascript" type="text/javascript" id="_mN_dy_610166569_1" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/fcmdynet.js(3).download"></script><iframe marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="250" width="300" id="_mN_main_610166569_3_n" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/saved_resource(3).html"></iframe>
+
+</div>
+<div>
+    <div class="panel panel-default text-left">
+        <div class="panelheaderRed">
+            Recent Articles
+        </div>
+        <div class="panel-body">
+            <div id="dvSinglePostRecentPostBind"><ul class="list-unstyled">
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/career/skills-that-will-boost-dotnet-developer-salary" style="">Skills that will boost .NET developer salary</a>
+                <hr style="margin-top:10px; margin-bottom:10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/typescript/solid-single-responsibility-principal-in-typescript" style="">SOLID- Single Responsibility Principal in Typescript</a>
+                <hr style="margin-top:10px; margin-bottom:10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/java/configuring-eclipse-ide-with-tomcat-server-on-windows-10" style="">Configuring Eclipse IDE with Tomcat Server on Windows 10</a>
+                <hr style="margin-top:10px; margin-bottom:10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/java/step-by-step-installation-of-java-development-kit-on-windows-10" style="">Step by step Installation of Java Development Kit on Windows 10</a>
+                <hr style="margin-top:10px; margin-bottom:10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/csharp/top-10-csharp-string-technical-interview-questions" style="">Top 10 CSharp String Technical Interview Questions</a>
+        </li>
+
+</ul>
+</div>
+        </div>
+    </div>
+</div>
+<div>
+    <script id="mNCC" language="javascript">
+    medianet_width = "160";
+    medianet_height = "600";
+    medianet_crid = "471629898";
+    medianet_versionId = "3111299";
+</script>
+<script id="mNSC" language="javascript" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/nmedianet.js.download"></script><script language="javascript" type="text/javascript" id="_mN_dy_471629898" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/fcmdynet.js(4).download"></script><iframe marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="600" width="160" id="_mN_main_471629898_4_n" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/saved_resource(4).html"></iframe>
+
+</div>
+<div>
+    <div class="panel panel-default text-left">
+        <div class="panelheaderGreen">
+            Popular Articles
+        </div>
+        <div class="panel-body">
+            <div id="dvSinglePostPopularPostBind"><ul class="list-unstyled">
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/curl/how-to-use-curl-command-line-tool-with-ftp-and-sftp" style="">How to use Curl Command line tool with FTP and SFTP</a>
+                <hr style="margin-top: 10px; margin-bottom: 10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/mvc/export-data-in-excel-file-with-asp-net-mvc" style="">Export Data in Excel File with Asp.Net MVC </a>
+                <hr style="margin-top: 10px; margin-bottom: 10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/web-api/token-based-authentication-in-web-api" style="">Token Based Authentication in Web API</a>
+                <hr style="margin-top: 10px; margin-bottom: 10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/angularjs/angular-js-with-mvc-basic-example" style="">Angular JS with MVC Basic Example</a>
+                <hr style="margin-top: 10px; margin-bottom: 10px;">
+        </li>
+        <li>
+            <a href="http://www.mukeshkumar.net/articles/web-api/dapper-and-repository-pattern-in-web-api" style="">Dapper and Repository Pattern in Web API</a>
+        </li>
+
+</ul>
+</div>
+        </div>
+    </div>
+</div>
+
+<!--Social Icon-->
+<div>
+    <div class="panel panel-default text-left">
+        <div class="panelheaderblue">
+            Find Me
+        </div>
+        <div class="panel-body">
+            <div id="dvHomePopularPostBind">
+                <div class="loaderCenter">
+                    <a href="https://www.facebook.com/mukeshkumartech" target="_blank">
+    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Facebook(1).png" alt="facebook" title="find me on facebook" width="32" height="32">
+</a>
+<a href="https://twitter.com/mukeshkumartech" target="_blank">
+    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Twitter(1).png" alt="twitter" title="find me on twitter" width="32" height="32">
+</a>
+<a href="https://plus.google.com/u/0/+mukeshkumartech" target="_blank">
+
+    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/Googleplus.png" alt="google +" title="find me on google+" width="32" height="32">
+</a>
+<a href="https://in.linkedin.com/in/mukeshkumartech" target="_blank">
+    <img src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/LinkedIn(1).png" alt="linkedin" title="find me on linkedin" width="32" height="32">
+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+            </section>
+            <span itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+                <meta itemprop="name" content="Mukesh Kumar">
+            </span>
+        </div>
+        <hr>
+              
+    </div><iframe src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/bfp_ssn.html" style="display: none; height: 0px; width: 0px;"></iframe><div id="userdata_el" style="visibility: hidden; position: absolute;"></div>
+    <div class="search-text">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="form">
+                <br>
+                <h4 style="color:#2e97bd;">SIGN UP TO OUR NEWSLETTER</h4>
+<form action="http://www.mukeshkumar.net/Home/SubscribeUs" class="form-search form-horizontal" method="post">                    <input type="text" class="input-search" name="subscriberEmail" id="subscriberEmail" placeholder="Email Address" required="">
+                    <button type="submit" class="btn-search" onclick="fncheck()">SUBMIT</button>
+</form>                <br>
+                            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function fncheck() {
+        var subscriberEmail = document.getElementById("subscriberEmail").value.trim();
+        if (subscriberEmail == "") {
+            alert('The subscriber email should not be empty...');
+            document.getElementById("subscriberEmail").focus();
+            return false;
+        }
+        else {
+            var valid = validateEmail(subscriberEmail);
+            if (!valid) {
+                alert('Not a valid e-mail address');
+                return false;
+            } else {
+
+            }
+        }
+    }
+
+    function validateEmail(email) {
+        var filter = "/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{0,4}$/";
+        return filter.test(email);
+    }
+</script>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> AUTHOR</div>
+                <p>He is Software Developer, Microsoft MVP, C# Corner MVP, Blogger and has extensive experience with designing and developing enterprise scale applications on Microsoft .NET Framework. I write at C# Corner, Asp.Net Forum, Technet and Jsfiddle. </p>
+                <p><i class="fa fa-map-pin"></i>New Delhi, INDIA</p>
+                <p><i class="fa fa-envelope"></i> E-mail : info@mukeshkumar.net</p>
+
+            </div>
+            <div class="col-md-4 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">GENERAL LINKS</h6>
+                <ul class="footer-ul">
+                    <li> <a href="http://www.mukeshkumar.net/">Home</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/awards">Awards</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/achievements">Achievements</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/privacypolicy">Privacy Policy</a></li>
+                    <li> <a href="http://www.mukeshkumar.net/contactus">Contact</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">LATEST POST</h6>
+                <div class="post">
+                    <p><a href="http://www.mukeshkumar.net/Upload/ebook/CSharp-6-Practical-Guide-By-Mukesh-Kumar.pdf">CSharp 6 Practical Guide E-Book</a> <span>August,2016</span></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+<!--footer start from here-->
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2017 - All Rights with Mukesh Kumar</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="http://www.mukeshkumar.net/">mukeshkumar.net</a></li>
+                <li><a href="http://www.mukeshkumar.net/about">About me</a></li>
+                <li><a href="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data#">Awards</a></li>
+                <li><a href="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data#">Blog</a></li>
+                <li><a href="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data#">Contact us</a></li>
+                <li><a href="http://www.mukeshkumar.net/articles/angular/3-ways-to-implement-autocomplete-textbox-in-angular-with-typescript-on-large-data#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <script src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/highlight.min.js.download"></script>
+    <script src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/jquery.min.js.download" async=""></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        (window.jQuery) || document.write('<script type="text/javascript" src="~/Content/Jquery/jquery-1.10.2.min.js"><\/script>');//]]>
+    </script><script type="text/javascript" src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/jquery-1.10.2.min.js.download"></script>
+    <script src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/bootstrap.min.js.download" async=""></script>
+    <script src="./3 ways to implement Autocomplete Textbox in Angular with TypeScript on Large Data _ Mukesh Kumar_files/SinglePostJquery.js.download" defer=""></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+
+</body></html>
